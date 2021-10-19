@@ -1,0 +1,26 @@
+{
+  "name": "@livenetworks/ln-obfuscator",
+  "version": "1.0.1",
+  "description": "Plain JavaScript Component. Obfuscate email, telephone number, any personal data from spam crawlers without writing single line of JavaScript.",
+  "keywords": [
+    "obfuscator",
+    "component",
+    "native javascript",
+    "vanilla",
+    "web components"
+  ],
+  "homepage": "https://github.com/liveNetworks/lnComponents",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liveNetworks/lnComponents.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liveNetworks/lnComponents/issues"
+  },
+  "main": "ln-obfuscator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dalibor Sojic",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "ln-ajaxify",
+  "version": "1.0.0",
+  "description": "Plain JavaScript Component. It convert regular links to ajax links.",
+  "keywords": [
+    "ajax"
+    , "component"
+    , "native javascript"
+    , "vanila javascript"
+  ],
+  "homepage": "https://github.com/liveNetworks/lnComponents",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/liveNetworks/lnComponents.git"
+  }
+  
+}
