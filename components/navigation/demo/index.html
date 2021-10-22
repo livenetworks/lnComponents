@@ -6,7 +6,14 @@
 			overflow:hidden;
 			transition:height 0.3s ease-out;
 			height:auto;
+			--ln-navigation: true;
 		}
+		@media screen and (min-width: 700px) {
+				nav ul {
+					--ln-navigation: false;
+					background-color: red;
+				}
+			}
 	</style>
 
 </head>

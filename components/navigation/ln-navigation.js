@@ -89,10 +89,15 @@
 	}
 
 	function trigger(target) {
-		if(target.dataset.lnNavigationCollapsed == 'true') {
-			collapse(target);
-		} else {
-			expand(target);
+		let t = window.getComputedStyle(target).getPropertyValue('--ln-navigation').trim();
+		console.log(t);
+		if (t == "true") {
+			console.log('asdf');
+			if(target.dataset.lnNavigationCollapsed == 'true') {
+				collapse(target);
+			} else {
+				expand(target);
+			}
 		}
 	}
 
