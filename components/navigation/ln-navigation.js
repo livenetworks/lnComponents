@@ -78,7 +78,7 @@
 			console.log(getStyle(el, '--ln-navigation-trigger'));
 			el.dataset.lnNavigationTrigger = getStyle(el, '--ln-navigation-trigger');
 			if (el.dataset.lnNavigationTrigger == 'false') {
-				el.style = '';
+				el.style.height = '';
 			}
 		});
 		
