@@ -58,7 +58,10 @@
 	function setObserver(target) {
 		var observer = new MutationObserver((mutations) => {
 			mutations.forEach((mutation) => {
-				trigger(mutation.target);
+				if (mutation.target.dataset.lnNavigationTrigger == 'true') {
+					trigger(mutation.target);
+					console.log('ebe mu majku atribut');
+				}
 			});
 		});
 
@@ -68,16 +71,38 @@
 		});
 	}
 
+
+	function windowResize() {
+		let menues = document.querySelectorAll("[" + DOM_SELECTOR + "-target]");
+		menues.forEach(menu => {
+			el = document.getElementById(menu.dataset.lnNavigationTarget);
+			console.log(getStyle(el, '--ln-navigation-trigger'));
+			el.dataset.lnNavigationTrigger = getStyle(el, '--ln-navigation-trigger');
+			if (el.dataset.lnNavigationTrigger == 'false') {
+				el.style = '';
+			}
+		});
+		
+	}
+
+
 	_domObserver();
 
 	function _init() {
 		let hamburger = this.dom.querySelectorAll("[" + DOM_SELECTOR + "-target]");
+		
+		window.onresize = windowResize;
 
 		hamburger.forEach((triggerButton) => {
-			setObserver(document.getElementById(triggerButton.dataset.lnNavigationTarget));
+			el = document.getElementById(triggerButton.dataset.lnNavigationTarget);
+			el.dataset.lnNavigationTrigger = getStyle(el, '--ln-navigation-trigger');
+			el.dataset.lnNavigationCollapsed = getStyle(el, '--ln-navigation-collapsed');
+
+			setObserver(el);
+			// setCSSObserver(el);
 
 			triggerButton.addEventListener("click", (event) => {
-				let target = document.getElementById(event.target.dataset.lnNavigationTarget)
+				let target = document.getElementById(event.target.dataset.lnNavigationTarget);
 					
 				if(target.dataset.lnNavigationCollapsed == 'true') {
 					target.dataset.lnNavigationCollapsed = 'false';
@@ -88,16 +113,16 @@
 		})
 	}
 
+	function getStyle(element, property) {
+		let el = window.getComputedStyle(element);
+		return el.getPropertyValue(property).trim();
+	}
+
 	function trigger(target) {
-		let t = window.getComputedStyle(target).getPropertyValue('--ln-navigation').trim();
-		console.log(t);
-		if (t == "true") {
-			console.log('asdf');
-			if(target.dataset.lnNavigationCollapsed == 'true') {
-				collapse(target);
-			} else {
-				expand(target);
-			}
+		if(target.dataset.lnNavigationCollapsed == 'true') {
+			collapse(target);
+		} else {
+			expand(target);
 		}
 	}
 
@@ -109,7 +134,7 @@
 			// remove this event listener so it only gets triggered once
 			target.removeEventListener('transitionend', arguments.callee);
 			// remove "height" from the element's inline styles, so it can return to its initial value
-			target.style.height = null;
+			// target.style.height = null;
 		});
 	}
 
