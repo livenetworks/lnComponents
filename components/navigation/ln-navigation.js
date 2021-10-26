@@ -60,7 +60,6 @@
 			mutations.forEach((mutation) => {
 				if (mutation.target.dataset.lnNavigationTrigger == 'true') {
 					trigger(mutation.target);
-					console.log('ebe mu majku atribut');
 				}
 			});
 		});
@@ -89,6 +88,7 @@
 	_domObserver();
 
 	function _init() {
+		console.log(this.dom);
 		let hamburger = this.dom.querySelectorAll("[" + DOM_SELECTOR + "-target]");
 		
 		window.onresize = windowResize;
